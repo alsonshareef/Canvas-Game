@@ -1,6 +1,8 @@
 
 // ** This file is responsible for connecting all the controllers, and essentially run the general app logic. ** //
 
+import "./index.css"
+
 import { Display } from "./controllers/display";
 import { Engine } from "./controllers/engine";
 import { Game } from "./controllers/game";
