@@ -5,7 +5,8 @@
         - Setup Babel to be able to use ES6 syntax for writing modular JS code (DONE)
         - Setup Webpack
             a) Basic Config (DONE)
-            b) Added necessary loaders
+            b) Added necessary loaders (DONE)
+            c) Finish the rest of Colt's Webpack Guide
         - Start building the logic for creating a player and how the player is going to move through user input
         within the defined world.
 */
