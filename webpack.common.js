@@ -1,4 +1,3 @@
-const path = require('path');
 
 // Plugin used to generate build/index.html with hashed main.js file linked dynamically
 const HTMLWebpackPlugin = require('html-webpack-plugin')
@@ -6,12 +5,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 // **
 
 module.exports = {
-    mode: "development",
     entry: './src/index.js',
-    output: {
-        filename: 'main.[contentHash].js',
-        path: path.resolve(__dirname, 'build')
-    },
     plugins: [new HTMLWebpackPlugin({
         template: "./src/template.html" // HTML template that will be used to generate build/index.html
     })],
