@@ -12,6 +12,27 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(html)$/,
+                use: {
+                  loader: 'html-loader',
+                  options: {
+                    attrs: [':data-src']
+                  }
+                }
+            },
+            {
+                test: /\.(svg|png|jpg|gif)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                        name: "[name].[hash].[ext]",
+                        outputPath: "imgs"
+                    },
+                  },
+                ],
+            },
+            {
                 test: /\.css$/,
                 use: [
                     "style-loader", // 2. Injects styles into DOM through main.js.
