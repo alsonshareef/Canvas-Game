@@ -1,3 +1,7 @@
+/*
+    This Webpack config file is responsible for general configs regardless of environment.
+*/
+
 
 // Plugin used to generate build/index.html with hashed main.js file linked dynamically
 const HTMLWebpackPlugin = require('html-webpack-plugin')
