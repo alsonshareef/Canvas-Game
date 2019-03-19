@@ -1,12 +1,13 @@
 /* TODO LIST */
 
 /*
-    1. Start planning out game that I want to create, and how I am going to go about it.
+    1. Setup project environment.
         - Setup Babel to be able to use ES6 syntax for writing modular JS code (DONE)
-        - Setup Webpack
+        - Setup Webpack (DONE)
             a) Basic Config (DONE)
             b) Added necessary loaders (DONE)
-            c) Finish the rest of Colt's Webpack Guide
-        - Start building the logic for creating a player and how the player is going to move through user input
-        within the defined world.
+            c) Finish the rest of Colt's Webpack Guide (DONE)
+
+    2. Start building the logic for creating a player and how the player is going to move through user input
+    within the defined world. After learning this fundamental, start brainstorming what kind of game I can make around it.
 */
