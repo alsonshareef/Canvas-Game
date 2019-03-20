@@ -20,7 +20,7 @@ module.exports = merge(common, {
     mode: "development",
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'build')
+        path: path.resolve(__dirname, '../build')
     },
     plugins: [new HTMLWebpackPlugin({ // No minifying property for development. Only for production.
         template: "./src/template.html"

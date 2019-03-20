@@ -32,7 +32,7 @@ module.exports = merge(common, {
     mode: "production",
     output: {
         filename: 'main.[contentHash].js',
-        path: path.resolve(__dirname, 'build')
+        path: path.resolve(__dirname, '../build')
     },
     module: {
         rules: [
