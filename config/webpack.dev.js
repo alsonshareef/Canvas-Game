@@ -2,7 +2,7 @@
     This Webpack config file is responsible for configs only when in the development environment.
 */
 
-// Provides utilities for working with file and directory paths.
+// Provides utilities for working with absolute file and directory paths.
 const path = require('path');
 
 // Allows multiple config files to be run by passing other config files as params in merge method.
