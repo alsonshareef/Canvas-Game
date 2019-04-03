@@ -2,11 +2,7 @@
 // ** This file handles the user input. ** //
 
 export class User {
-    constructor(name) {
-        this.name = name
-    }
+    constructor() {
 
-    Intro(){
-        return this.name
     }
 }

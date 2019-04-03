@@ -8,16 +8,12 @@ import { Engine } from "./controllers/engine";
 import { Game, Player } from "./controllers/game";
 import { User } from "./controllers/user";
 
-// **
-
-let display = new Display('Display')
-let engine = new Engine('Engine')
-let game = new Game('black')
+// Instantiation of all components
+let display = new Display(document.getElementById('primary-canvas'))
+let engine = new Engine()
+let game = new Game()
 let player = new Player()
-let user = new User('User')
+let user = new User()
 
-// console.log(display.Intro())
-// console.log(engine.Intro())
-console.log(game)
-console.log(player)
-// console.log(user.Intro())
+// **
+display.context.fillRect(0, 0, game.world.width, game.world.height)

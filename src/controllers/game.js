@@ -13,23 +13,23 @@ export class Game {
 
             player: "",
 
-            height: 50,
-            width: 50,
+            height: 500,
+            width: 6000,
 
             playerCollision: (obj) => {
 
-            }
+            },
         }
-
+        
     }
 
-    showWorld = () => {
-        return this.world
+    updateWorld = () => {
+
     }
 }
 
 export class Player extends Game {
-    constructor(){
+    constructor(x, y){
         super()
         this.color = "#000000",
         this.height = 16,
@@ -39,5 +39,19 @@ export class Player extends Game {
         this.width = 16
         this.x = 100,
         this.y = 50
+    }
+
+    moveLeft() {
+        this.velocity_x -= 0.5
+    }
+
+    moveRight() {
+        this.velocity_x += 0.5
+    }
+
+    jump() {
+        if (!this.jumping) {
+            this.jumping = true
+        }
     }
 }
