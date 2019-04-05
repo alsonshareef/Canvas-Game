@@ -16,4 +16,25 @@ let player = new Player()
 let user = new User()
 
 // **
-display.context.fillRect(0, 0, game.world.width, game.world.height)
+
+// Resizes the game world dimensions.
+const resize = () => {
+    display.resizeCanvas(window.innerHeight, window.innerWidth)
+}
+
+// Renders the world onto canvas.
+const render = () => {
+    display.fillBuffer()
+    display.renderWorld()
+}
+
+
+// GAME INITILIZATION //
+
+/* Setting buffer canvas dimensions to game dimensions so the world will display correctly when drawn to primary canvas. */
+display.buffer.canvas.height = game.world.height
+display.buffer.canvas.width = game.world.width
+
+resize()
+render()
+// display.renderWorld(game.world.background_color, 100, 100)

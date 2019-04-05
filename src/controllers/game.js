@@ -6,7 +6,7 @@ export class Game {
 
         // This object will hold properties related to the world that the character will exist in.
         this.world = {
-            background_color: "#000000",
+            background_color: "rgb(17, 60, 81)",
 
             friction: 0,
             gravity: 0,
@@ -14,11 +14,11 @@ export class Game {
             player: "",
 
             height: 500,
-            width: 6000,
+            width: 500,
 
             playerCollision: (obj) => {
 
-            },
+            }
         }
         
     }

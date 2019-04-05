@@ -9,5 +9,6 @@
             c) Finish the rest of Colt's Webpack Guide (DONE)
 
     2. Start building the logic for creating a player and how the player is going to move through user input within the defined world. After learning this fundamental, start brainstorming what kind of game I can make around it.
+        - Finish building out Display class methods regarding rendering canvas and canvas props.
         - Finish building out Game class and Player sub-class.
 */
