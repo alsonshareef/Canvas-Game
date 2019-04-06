@@ -3,10 +3,10 @@
 
 import "./index.css"
 
-import { Display } from "./controllers/display";
-import { Engine } from "./controllers/engine";
-import { Game, Player } from "./controllers/game";
-import { User } from "./controllers/user";
+import { Display } from "./models/display";
+import { Engine } from "./models/engine";
+import { Game, Player } from "./models/game";
+import { User } from "./models/user";
 
 // Instantiation of all components
 let display = new Display(document.getElementById('primary-canvas'))
@@ -15,7 +15,7 @@ let game = new Game()
 let player = new Player()
 let user = new User()
 
-// **
+// CONTROLLER FUNCTIONS - purpose is for interacting with the data of different models data.**
 
 // Resizes the game world dimensions.
 const resize = () => {

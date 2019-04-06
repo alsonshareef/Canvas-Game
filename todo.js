@@ -10,5 +10,6 @@
 
     2. Start building the logic for creating a player and how the player is going to move through user input within the defined world. After learning this fundamental, start brainstorming what kind of game I can make around it.
         - Finish building out Display class methods regarding rendering canvas and canvas props.
+            - Fix buffer canvas dimensions; the buffer is the same size as primary canvas for some reason.
         - Finish building out Game class and Player sub-class.
 */
