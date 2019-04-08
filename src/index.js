@@ -15,16 +15,17 @@ let game = new Game()
 let player = new Player()
 let user = new User()
 
-// CONTROLLER FUNCTIONS - purpose is for interacting with the data of different models data.**
+// CONTROLLER FUNCTIONS - purpose is for interacting with the data of different models.**
 
 // Resizes the game world dimensions.
 const resize = () => {
-    display.resizeCanvas(window.innerHeight, window.innerWidth)
+    display.resizeCanvas(window.innerHeight - 30, window.innerWidth - 30, game.world.height / game.world.width)
+    display.renderWorld()
 }
 
 // Renders the world onto canvas.
 const render = () => {
-    display.fillBuffer()
+    display.fillBuffer(game.world.background_color)
     display.renderWorld()
 }
 
@@ -34,6 +35,9 @@ const render = () => {
 /* Setting buffer canvas dimensions to game dimensions so the world will display correctly when drawn to primary canvas. */
 display.buffer.canvas.height = game.world.height
 display.buffer.canvas.width = game.world.width
+
+// Whenever browser window size changes, run resize method.
+window.addEventListener("resize",  resize);
 
 resize()
 render()

@@ -9,9 +9,14 @@ export class Display {
     }
 
     // Used to resize canvas to the game's world dimensions.
-    resizeCanvas(height, width){
-        this.context.canvas.height = height
-        this.context.canvas.width = width
+    resizeCanvas(clientHeight, clientWidth, gameAspectRatio){
+        if (clientHeight / clientWidth > gameAspectRatio) {
+            this.context.canvas.height = clientWidth * gameAspectRatio
+            this.context.canvas.width = clientWidth
+        } else {
+            this.context.canvas.height = clientHeight
+            this.context.canvas.width = clientHeight / gameAspectRatio
+        }
     }
 
     // Fill buffer canvas with world using data from game.world object.

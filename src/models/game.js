@@ -13,8 +13,8 @@ export class Game {
 
             player: "",
 
-            height: 500,
-            width: 500,
+            height: 72,
+            width: 128,
 
             playerCollision: (obj) => {
 
