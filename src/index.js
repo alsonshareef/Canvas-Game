@@ -5,23 +5,22 @@ import "./index.css"
 
 import { Display } from "./models/display";
 import { Engine } from "./models/engine";
-import { Game, Player } from "./models/game";
-import { User } from "./models/user";
+import { Game } from "./models/game";
+import { Control } from "./models/control";
 
 // Instantiation of all components
 let display = new Display(document.getElementById('primary-canvas'))
 let engine = new Engine()
 let game = new Game()
-let player = new Player()
-let user = new User()
-
+let player = game.world.player
+let control = new Control()
 
 
 // CONTROLLER FUNCTIONS - purpose is for interacting with the data of different models.**
 
 // Resizes canvas whenever viewport dimensions change, to dimensions with same aspect ratio as game world.
 const resize = () => {
-    display.resizeCanvas(window.innerHeight, window.innerWidth - 30, game.world.height / game.world.width)
+    display.resizeCanvas(window.innerHeight - 30, window.innerWidth - 30, game.world.height / game.world.width)
     display.renderWorld()
 }
 
@@ -39,8 +38,9 @@ const render = () => {
 display.buffer.canvas.height = game.world.height
 display.buffer.canvas.width = game.world.width
 
-// Whenever viewport dimensions changes, run resize method.
-window.addEventListener("resize",  resize);
+window.addEventListener("resize",  resize); // Whenever viewport dimensions changes, run resize method.
+window.addEventListener("keydown", control.keyListener) 
+window.addEventListener("keyup", control.keyListener)
 
 // Invoked at first load of the game.
 resize()

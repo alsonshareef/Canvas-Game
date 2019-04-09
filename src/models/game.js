@@ -6,17 +6,16 @@ export class Game {
 
         // This object will hold properties related to the world that the character will exist in.
         this.world = {
-            background_color: "rgb(17, 60, 81)",
-
+            background_color: "rgba(17, 60, 81, 0.60)",
             friction: 0,
             gravity: 0,
-
-            player: "",
-
-            height: 72,
-            width: 128,
-
+            player: new Player(),
+            height: 108,
+            width: 198,
             playerCollision: (obj) => {
+                
+            },
+            update: () => {
 
             }
         }
@@ -24,34 +23,37 @@ export class Game {
     }
 
     updateWorld = () => {
-
+        this.world.update()
     }
 }
 
-export class Player extends Game {
+class Player {
     constructor(x, y){
-        super()
         this.color = "#000000",
         this.height = 16,
+        this.width = 16
         this.jumping = true,
         this.velocity_x = 0,
         this.velocity_y = 0,
-        this.width = 16
         this.x = 100,
         this.y = 50
     }
 
-    moveLeft() {
+    moveLeft = () => {
         this.velocity_x -= 0.5
     }
 
-    moveRight() {
+    moveRight = () => {
         this.velocity_x += 0.5
     }
 
-    jump() {
+    jump = () => {
         if (!this.jumping) {
             this.jumping = true
         }
+    }
+
+    update = () => {
+        
     }
 }
