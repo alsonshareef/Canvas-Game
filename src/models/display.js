@@ -5,18 +5,7 @@ export class Display {
     constructor(canvas) {
         // Primary canvas context, and secondary canvas to be used as a buffer.
         this.context = canvas.getContext("2d"); 
-        this.buffer  = document.createElement("canvas").getContext("2d") 
-    }
-
-    // Used to resize canvas to the game's world dimensions.
-    resizeCanvas(clientHeight, clientWidth, gameAspectRatio){
-        if (clientHeight / clientWidth > gameAspectRatio) {
-            this.context.canvas.height = clientWidth * gameAspectRatio
-            this.context.canvas.width = clientWidth
-        } else {
-            this.context.canvas.height = clientHeight
-            this.context.canvas.width = clientHeight / gameAspectRatio
-        }
+        this.buffer  = document.createElement("canvas").getContext("2d")
     }
 
     // Fill buffer canvas with world using data from game.world object.
@@ -30,8 +19,19 @@ export class Display {
 
     }
 
-    // Uses drawImage to draw buffer canvas onto primary canvas.
+    // Draws buffer canvas onto primary canvas.
     renderWorld(){
         this.context.drawImage(this.buffer.canvas, 0, 0, this.buffer.canvas.width, this.buffer.canvas.height, 0, 0, this.context.canvas.width, this.context.canvas.height)
+    }
+
+    // Used to resize canvas dimensions to dimensions with same aspect ratio as the game world.
+    resizeCanvas(viewHeight, viewWidth, gameAspectRatio){
+        if (viewHeight / viewWidth > gameAspectRatio) {
+            this.context.canvas.height = viewWidth * gameAspectRatio
+            this.context.canvas.width = viewWidth
+        } else {
+            this.context.canvas.height = viewHeight
+            this.context.canvas.width = viewHeight / gameAspectRatio
+        }
     }
 }
