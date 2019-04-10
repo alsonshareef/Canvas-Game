@@ -9,7 +9,7 @@ import { Control } from './models/control';
 
 // Instantiation of all components
 let display = new Display(document.getElementById('primary-canvas'));
-let engine = new Engine();
+let engine = new Engine(update, draw);
 let game = new Game();
 let player = game.world.player;
 let control = new Control();
@@ -19,16 +19,32 @@ let control = new Control();
 // Resizes canvas whenever viewport dimensions change, to dimensions with same aspect ratio as game world.
 const resize = () => {
 	display.resizeCanvas(window.innerHeight - 30, window.innerWidth - 30, game.world.height / game.world.width);
-	display.renderWorld();
+	display.drawWorld();
 };
 
 // Fills the buffer canvas with the world, then draws buffer onto primary canvas.
-const render = () => {
+const draw = () => {
 	display.fillBuffer(game.world.background_color);
-	display.renderWorld();
+	display.drawPlayer(player.x, player.y, player.width, player.height, player.color);
+	display.drawWorld();
 };
 
-const update = () => {};
+const update = () => {
+	if (control.left.active) {
+		player.moveLeft();
+	}
+	if (control.right.active) {
+		player.moveRight();
+	}
+	if (control.up.active) {
+		player.moveUp();
+	}
+	if (control.down.active) {
+		player.moveDown();
+	}
+
+	game.updateWorld();
+};
 
 // GAME INITILIZATION //
 
@@ -45,4 +61,4 @@ window.addEventListener('keyup', control.keyListener);
 
 // Invoked at first load of the game.
 resize();
-render();
+draw();

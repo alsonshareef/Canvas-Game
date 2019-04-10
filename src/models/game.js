@@ -38,7 +38,10 @@ export class Game {
 						break;
 				}
 			},
-			update: () => {}
+			update: function() {
+				this.player.update();
+				this.handleCollision(this.player);
+			}
 		};
 	}
 
@@ -49,7 +52,7 @@ export class Game {
 
 class Player {
 	constructor(x, y) {
-		this.color = '#000000';
+		this.color = 'rgb(244, 182, 66)';
 		this.height = 16;
 		this.width = 16;
 		this.jumping = true;
@@ -67,11 +70,22 @@ class Player {
 		this.velocity_x += 0.5;
 	};
 
-	jump = () => {
-		if (!this.jumping) {
-			this.jumping = true;
-		}
+	moveUp = () => {
+		this.velocity_y += 0.5;
 	};
 
-	update = () => {};
+	moveDown = () => {
+		this.velocity_y -= 0.5;
+	};
+
+	// jump = () => {
+	// 	if (!this.jumping) {
+	// 		this.jumping = true;
+	// 	}
+	// };
+
+	update = () => {
+		this.x += this.velocity_x;
+		this.y += this.velocity_y;
+	};
 }

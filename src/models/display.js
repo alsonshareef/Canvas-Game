@@ -14,10 +14,13 @@ export class Display {
 	}
 
 	// Draws player shape into the buffer which will later be drawn onto primary canvas
-	drawPlayer() {}
+	drawPlayer(x, y, width, height, color) {
+		this.buffer.fillStyle = color;
+		this.buffer.fillRect(Math.floor(x), Math.floor(y), width, height);
+	}
 
 	// Draws buffer canvas onto primary canvas.
-	renderWorld() {
+	drawWorld() {
 		this.context.drawImage(
 			this.buffer.canvas,
 			0,
