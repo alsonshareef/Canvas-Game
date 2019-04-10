@@ -11,6 +11,7 @@
     2. Start building the logic for creating a player and how the player is going to move through user input within the defined world. After learning this fundamental, start brainstorming what kind of game I can make around it.
         - Finish building out Display class methods regarding rendering canvas and canvas props. (DONE)
             - Fix buffer canvas dimensions; the buffer is the same size as primary canvas for some reason. (DONE)
-        - Finish control class in order to keep track of keyboard events.
-        - Start building out player functionality / physics.
+        - Finish control class in order to keep track of keyboard events. (DONE)
+        - Start building out player functionality. (DONE)
+        - Start looking at implementing acceleration, friction, gravity and the jumping mechanism.
 */
