@@ -7,13 +7,6 @@ import { Engine } from './models/engine';
 import { Game } from './models/game';
 import { Control } from './models/control';
 
-// Instantiation of all components
-let display = new Display(document.getElementById('primary-canvas'));
-let engine = new Engine(update, draw);
-let game = new Game();
-let player = game.world.player;
-let control = new Control();
-
 // CONTROLLER FUNCTIONS - purpose is for interacting with the data of different models.**
 
 // Resizes canvas whenever viewport dimensions change, to dimensions with same aspect ratio as game world.
@@ -46,6 +39,13 @@ const update = () => {
 	game.updateWorld();
 };
 
+// Instantiation of all components
+let display = new Display(document.getElementById('primary-canvas'));
+let engine = new Engine(update, draw);
+let game = new Game();
+let player = game.world.player;
+let control = new Control();
+
 // GAME INITILIZATION //
 
 /* Setting buffer canvas dimensions to game dimensions so the world will display correctly when drawn to primary canvas. */
@@ -61,4 +61,4 @@ window.addEventListener('keyup', control.keyListener);
 
 // Invoked at first load of the game.
 resize();
-draw();
+engine.start();

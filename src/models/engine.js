@@ -6,9 +6,13 @@ export class Engine {
 		this.draw = draw;
 	}
 
-	update = () => {};
+	loop = () => {
+		this.update();
+		this.draw();
+		requestAnimationFrame(this.loop);
+	};
 
-	draw = () => {};
-
-	loop = () => {};
+	start = () => {
+		requestAnimationFrame(this.loop);
+	};
 }

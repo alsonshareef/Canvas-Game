@@ -11,31 +11,29 @@ export class Game {
 			height: 108,
 			width: 192,
 			handleCollision: (obj) => {
-				switch (obj) {
-					// If player hits max-left, stop player from continuing left.
-					case obj.x < 0:
-						obj.x = 0;
-						obj.velocity_x = 0;
-						break;
+				// If player hits max-left, stop player from continuing left.
+				if (obj.x < 0) {
+					obj.x = 0;
+					obj.velocity_x = 0;
+				}
 
-					// If player hits max-right, stop player from continuing right.
-					case obj.x + obj.width > this.width:
-						obj.x = this.width - obj.width;
-						obj.velocity_x = 0;
-						break;
+				// If player hits max-right, stop player from continuing right.
+				if (obj.x + obj.width > this.world.width) {
+					obj.x = this.world.width - obj.width;
+					obj.velocity_x = 0;
+					obj.velocity_x = 0;
+				}
 
-					// If player hits max-bottom, stop player from continuing down.
-					case obj.y < 0:
-						obj.y = 0;
-						obj.velocity_y = 0;
-						break;
+				// If player hits max-bottom, stop player from continuing down.
+				if (obj.y < 0) {
+					obj.y = 0;
+					obj.velocity_y = 0;
+				}
 
-					// If player hits max-height, stop player from continuing up.
-					case obj.y + obj.height > this.height:
-						obj.jumping = false;
-						obj.y = this.height - obj.height;
-						obj.velocity_y = 0;
-						break;
+				// If player hits max-height, stop player from continuing up.
+				if (obj.y + obj.height > this.world.height) {
+					obj.y = this.world.height - obj.height;
+					obj.velocity_y = 0;
 				}
 			},
 			update: function() {
@@ -53,8 +51,8 @@ export class Game {
 class Player {
 	constructor(x, y) {
 		this.color = 'rgb(244, 182, 66)';
-		this.height = 16;
-		this.width = 16;
+		this.height = 15;
+		this.width = 15;
 		this.jumping = true;
 		this.velocity_x = 0;
 		this.velocity_y = 0;
@@ -71,11 +69,11 @@ class Player {
 	};
 
 	moveUp = () => {
-		this.velocity_y += 0.5;
+		this.velocity_y -= 0.5;
 	};
 
 	moveDown = () => {
-		this.velocity_y -= 0.5;
+		this.velocity_y += 0.5;
 	};
 
 	// jump = () => {
