@@ -4,8 +4,8 @@ export class Game {
 	constructor() {
 		// This object will hold properties related to the world that the character will exist in.
 		this.world = {
-			background_color: 'rgba(17, 60, 81, 1)',
-			friction: 0,
+			background_color: 'rgb(17, 60, 81)',
+			friction: 0.9,
 			gravity: 0,
 			player: new Player(),
 			height: 108,
@@ -37,6 +37,8 @@ export class Game {
 				}
 			},
 			update: function() {
+				this.player.velocity_x *= this.friction;
+				this.player.velocity_y *= this.friction;
 				this.player.update();
 				this.handleCollision(this.player);
 			}
