@@ -1,4 +1,4 @@
-/** This file is responsible for logic relating to the HTML/CSS and Canvas; in other words what the user will see. **/
+/** This file is responsible for logic relating to the Canvas; in other words what the user will see. **/
 
 export class Display {
 	constructor(canvas) {

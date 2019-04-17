@@ -5,7 +5,7 @@ export class Game {
 		// This object will hold properties related to the world that the character will exist in.
 		this.world = {
 			background_color: 'rgb(17, 60, 81)',
-			friction: 0.9,
+			friction: 0.95,
 			gravity: 0,
 			player: new Player(),
 			height: 108,
@@ -20,7 +20,6 @@ export class Game {
 				// If player hits max-right, stop player from continuing right.
 				if (obj.x + obj.width > this.world.width) {
 					obj.x = this.world.width - obj.width;
-					obj.velocity_x = 0;
 					obj.velocity_x = 0;
 				}
 
