@@ -22,18 +22,19 @@ const draw = () => {
 	display.drawWorld();
 };
 
-const update = () => {
+// Updates the state of the player and world based on user input.
+const update = (delta) => {
 	if (control.left.active) {
-		player.moveLeft();
+		player.moveLeft(delta);
 	}
 	if (control.right.active) {
-		player.moveRight();
+		player.moveRight(delta);
 	}
 	if (control.up.active) {
-		player.moveUp();
+		player.moveUp(delta);
 	}
 	if (control.down.active) {
-		player.moveDown();
+		player.moveDown(delta);
 	}
 
 	game.updateWorld();

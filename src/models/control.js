@@ -3,10 +3,10 @@
 // The Control class holds the state of the arrows keys, specifically if they're activated or not.
 export class Control {
 	constructor() {
-		this.left = new Button();
-		this.right = new Button();
-		this.down = new Button();
-		this.up = new Button();
+		this.left = new Action();
+		this.right = new Action();
+		this.down = new Action();
+		this.up = new Action();
 	}
 
 	keyListener = (e) => {
@@ -29,7 +29,7 @@ export class Control {
 	};
 }
 
-class Button {
+class Action {
 	constructor(active) {
 		this.active = active;
 	}

@@ -4,11 +4,17 @@ export class Engine {
 	constructor(update, draw) {
 		this.update = update;
 		this.draw = draw;
+		this.lastRender = 0;
+		this.FPS = 100;
 	}
 
-	loop = () => {
-		this.update();
+	loop = (timestamp) => {
+		let delta = timestamp - this.lastRender; // keeps track of time passed since last frame render.
+		this.lastRender = timestamp;
+
+		this.update(delta);
 		this.draw();
+
 		requestAnimationFrame(this.loop);
 	};
 

@@ -10,29 +10,29 @@ export class Game {
 			player: new Player(),
 			height: 108,
 			width: 192,
-			handleCollision: (obj) => {
+			handleCollision: (player) => {
 				// If player hits max-left, stop player from continuing left.
-				if (obj.x < 0) {
-					obj.x = 0;
-					obj.velocity_x = 0;
+				if (player.x < 0) {
+					player.x = 0;
+					player.velocity_x = 0;
 				}
 
 				// If player hits max-right, stop player from continuing right.
-				if (obj.x + obj.width > this.world.width) {
-					obj.x = this.world.width - obj.width;
-					obj.velocity_x = 0;
+				if (player.x + player.width > this.world.width) {
+					player.x = this.world.width - player.width;
+					player.velocity_x = 0;
 				}
 
 				// If player hits max-bottom, stop player from continuing down.
-				if (obj.y < 0) {
-					obj.y = 0;
-					obj.velocity_y = 0;
+				if (player.y < 0) {
+					player.y = 0;
+					player.velocity_y = 0;
 				}
 
 				// If player hits max-height, stop player from continuing up.
-				if (obj.y + obj.height > this.world.height) {
-					obj.y = this.world.height - obj.height;
-					obj.velocity_y = 0;
+				if (player.y + player.height > this.world.height) {
+					player.y = this.world.height - player.height;
+					player.velocity_y = 0;
 				}
 			},
 			update: function() {
@@ -61,20 +61,20 @@ class Player {
 		this.y = 50;
 	}
 
-	moveLeft = () => {
-		this.velocity_x -= 0.5;
+	moveLeft = (delta) => {
+		this.velocity_x -= 0.05 * delta;
 	};
 
-	moveRight = () => {
-		this.velocity_x += 0.5;
+	moveRight = (delta) => {
+		this.velocity_x += 0.05 * delta;
 	};
 
-	moveUp = () => {
-		this.velocity_y -= 0.5;
+	moveUp = (delta) => {
+		this.velocity_y -= 0.05 * delta;
 	};
 
-	moveDown = () => {
-		this.velocity_y += 0.5;
+	moveDown = (delta) => {
+		this.velocity_y += 0.05 * delta;
 	};
 
 	// jump = () => {
