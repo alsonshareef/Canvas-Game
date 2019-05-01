@@ -8,10 +8,12 @@ export class Engine {
 		this.FPS = 100;
 	}
 
-	loop = (timestamp) => {
-		let delta = timestamp - this.lastRender; // keeps track of time passed since last frame render.
+	loop = timestamp => {
+		// Delta keeps track of time passed since last frame render.
+		let delta = timestamp - this.lastRender;
 		this.lastRender = timestamp;
 
+		// Influencing state changes with delta keeps game experience consistent regardless of FPS.
 		this.update(delta);
 		this.draw();
 
