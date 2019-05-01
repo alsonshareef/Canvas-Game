@@ -7,7 +7,7 @@ import { Engine } from './models/engine';
 import { Game } from './models/game';
 import { Control } from './models/control';
 
-// CONTROLLER FUNCTIONS - purpose is for interacting with the data of different models.**
+// CONTROLLER FUNCTIONS - purpose is for interacting with the data of different models.
 
 // Resizes canvas whenever viewport dimensions change, to dimensions with same aspect ratio as game world.
 const resize = () => {
