@@ -1,16 +1,24 @@
-/** This file is responsible for logic relating to the Canvas; in other words what the user will see. **/
+/**
+ * File: display.js
+ * Description: This file is responsible for logic relating to the Canvas; in other words what the user will see.
+ */
 
-export class Display {
+export default class Display {
 	constructor(canvas) {
 		// Primary canvas context, and secondary canvas to be used as a buffer.
-		this.context = canvas.getContext('2d');
-		this.buffer = document.createElement('canvas').getContext('2d');
+		this.context = canvas.getContext("2d");
+		this.buffer = document.createElement("canvas").getContext("2d");
 	}
 
 	// Fill buffer canvas with world using data from game.world object.
 	fillBuffer(color) {
 		this.buffer.fillStyle = color;
-		this.buffer.fillRect(0, 0, this.buffer.canvas.width, this.buffer.canvas.height);
+		this.buffer.fillRect(
+			0,
+			0,
+			this.buffer.canvas.width,
+			this.buffer.canvas.height
+		);
 	}
 
 	// Draws player shape into the buffer which will later be drawn onto primary canvas
