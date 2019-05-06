@@ -1,7 +1,10 @@
-// ** This file handles the user input. ** //
+/**
+ * File: control.js
+ * Description: This file handles the user input.
+ */
 
-// The Control class holds the state of the arrows keys, specifically if they're activated or not.
-export class Control {
+// The Control class holds instances of the Action class which will store state of keypresses, specifically if they're activated or not.
+export default class Control {
 	constructor() {
 		this.left = new Action();
 		this.right = new Action();
@@ -9,8 +12,8 @@ export class Control {
 		this.up = new Action();
 	}
 
-	keyListener = (e) => {
-		let pressed = e.type === 'keydown' ? true : false;
+	keyListener = e => {
+		let pressed = e.type === "keydown" ? true : false;
 
 		switch (e.keyCode) {
 			case 37:
@@ -29,6 +32,7 @@ export class Control {
 	};
 }
 
+// Stores the state of keypress.
 class Action {
 	constructor(active) {
 		this.active = active;
