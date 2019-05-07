@@ -6,7 +6,7 @@
 import Display from "./display";
 import Engine from "./engine";
 import World from "./world";
-import Control from "./control";
+import Input from "./input";
 
 export default class Game {
 	constructor() {
@@ -14,7 +14,7 @@ export default class Game {
 		this.engine = new Engine(this.update, this.draw);
 		this.world = new World();
 		this.player = this.world.player;
-		this.control = new Control();
+		this.input = new Input();
 	}
 
 	// Resizes canvas whenever viewport dimensions change, to dimensions with same aspect ratio as game world.
@@ -42,16 +42,16 @@ export default class Game {
 
 	// Updates the state of the player and world based on user input.
 	update = delta => {
-		if (this.control.left.active) {
+		if (this.input.left.active) {
 			this.player.moveLeft(delta);
 		}
-		if (this.control.right.active) {
+		if (this.input.right.active) {
 			this.player.moveRight(delta);
 		}
-		if (this.control.up.active) {
+		if (this.input.up.active) {
 			this.player.moveUp(delta);
 		}
-		if (this.control.down.active) {
+		if (this.input.down.active) {
 			this.player.moveDown(delta);
 		}
 		this.world.update();
@@ -60,8 +60,8 @@ export default class Game {
 	// Setup event listeners for window resizes and user input.
 	setupEventListeners = () => {
 		window.addEventListener("resize", this.resize);
-		window.addEventListener("keydown", this.control.keyListener);
-		window.addEventListener("keyup", this.control.keyListener);
+		window.addEventListener("keydown", this.input.keyListener);
+		window.addEventListener("keyup", this.input.keyListener);
 	};
 
 	// INITIALIZE
