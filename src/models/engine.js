@@ -19,8 +19,4 @@ export default class Engine {
 
 		requestAnimationFrame(this.loop);
 	};
-
-	start = () => {
-		requestAnimationFrame(this.loop);
-	};
 }
