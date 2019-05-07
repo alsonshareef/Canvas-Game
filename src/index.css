@@ -15,3 +15,7 @@ body {
 	align-items: space-around;
 	justify-items: center;
 }
+
+#primary-canvas {
+	border: solid black 1px;
+}
