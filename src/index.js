@@ -8,7 +8,7 @@ import Game from "./models/game";
 
 let game = new Game();
 
-/* Setting buffer canvas dimensions to game dimensions so the world will display correctly when drawn to primary canvas. */
+// Set buffer dimensions to game world dimensions so buffer is drawn correctly onto canvas.
 game.display.buffer.canvas.height = game.world.height;
 game.display.buffer.canvas.width = game.world.width;
 
