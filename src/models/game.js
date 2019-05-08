@@ -12,7 +12,10 @@ export default class Game {
 	constructor() {
 		this.display = new Display(document.getElementById("primary-canvas"));
 		this.engine = new Engine(this.update, this.draw);
-		this.world = new World();
+		this.world = new World(
+			this.display.context.canvas.height,
+			this.display.context.canvas.width
+		);
 		this.player = this.world.player;
 		this.input = new Input();
 	}
@@ -29,7 +32,8 @@ export default class Game {
 
 	// Fills the buffer canvas with the world, then draws buffer onto primary canvas.
 	draw = () => {
-		this.display.fillBuffer(this.world.background_color);
+		// this.display.fillBuffer(this.world.background_color);
+		this.display.drawWorld(this.world.background_color);
 		this.display.drawPlayer(
 			this.player.x,
 			this.player.y,
@@ -37,7 +41,6 @@ export default class Game {
 			this.player.height,
 			this.player.color
 		);
-		this.display.drawWorld();
 	};
 
 	// Updates the state of the player and world based on user input.

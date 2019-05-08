@@ -4,13 +4,13 @@
  */
 
 export default class World {
-	constructor() {
+	constructor(height, width) {
 		this.background_color = "rgb(17, 60, 81)";
 		this.friction = 0.95;
 		this.gravity = 0;
 		this.player = new Player();
-		this.height = 108;
-		this.width = 192;
+		this.height = height;
+		this.width = width;
 	}
 
 	handleCollision = player => {
@@ -55,8 +55,8 @@ class Player {
 		this.jumping = true;
 		this.velocity_x = 0;
 		this.velocity_y = 0;
-		this.x = 100;
-		this.y = 50;
+		this.x = 50;
+		this.y = 108;
 	}
 
 	moveLeft = delta => {

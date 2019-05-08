@@ -23,23 +23,31 @@ export default class Display {
 
 	// Draws player shape into the buffer which will later be drawn onto primary canvas
 	drawPlayer(x, y, width, height, color) {
-		this.buffer.fillStyle = color;
-		this.buffer.fillRect(Math.floor(x), Math.floor(y), width, height);
+		this.context.fillStyle = color;
+		this.context.fillRect(Math.floor(x), Math.floor(y), width, height);
 	}
 
 	// Draws buffer canvas onto primary canvas.
-	drawWorld() {
-		this.context.drawImage(
-			this.buffer.canvas,
-			0,
-			0,
-			this.buffer.canvas.width,
-			this.buffer.canvas.height,
+	drawWorld(color) {
+		this.context.fillStyle = color;
+		this.context.fillRect(
 			0,
 			0,
 			this.context.canvas.width,
 			this.context.canvas.height
 		);
+
+		// this.context.drawImage(
+		// 	this.buffer.canvas,
+		// 	0,
+		// 	0,
+		// 	this.buffer.canvas.width,
+		// 	this.buffer.canvas.height,
+		// 	0,
+		// 	0,
+		// 	this.context.canvas.width,
+		// 	this.context.canvas.height
+		// );
 	}
 
 	// Used to resize canvas dimensions to dimensions with same aspect ratio as the game world.
