@@ -7,18 +7,6 @@ export default class Display {
 	constructor(canvas) {
 		// Primary canvas context, and secondary canvas to be used as a buffer.
 		this.context = canvas.getContext("2d");
-		this.buffer = document.createElement("canvas").getContext("2d");
-	}
-
-	// Fill buffer canvas with world using data from game.world object.
-	fillBuffer(color) {
-		this.buffer.fillStyle = color;
-		this.buffer.fillRect(
-			0,
-			0,
-			this.buffer.canvas.width,
-			this.buffer.canvas.height
-		);
 	}
 
 	// Draws player shape into the buffer which will later be drawn onto primary canvas
@@ -36,18 +24,6 @@ export default class Display {
 			this.context.canvas.width,
 			this.context.canvas.height
 		);
-
-		// this.context.drawImage(
-		// 	this.buffer.canvas,
-		// 	0,
-		// 	0,
-		// 	this.buffer.canvas.width,
-		// 	this.buffer.canvas.height,
-		// 	0,
-		// 	0,
-		// 	this.context.canvas.width,
-		// 	this.context.canvas.height
-		// );
 	}
 
 	// Used to resize canvas dimensions to dimensions with same aspect ratio as the game world.
@@ -59,5 +35,11 @@ export default class Display {
 			this.context.canvas.height = viewHeight;
 			this.context.canvas.width = viewHeight / gameAspectRatio;
 		}
+
+		// Return updated canvas dimensions to update world dimensions.
+		return {
+			width: this.context.canvas.width,
+			height: this.context.canvas.height
+		};
 	}
 }
