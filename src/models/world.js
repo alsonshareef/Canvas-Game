@@ -13,6 +13,11 @@ export default class World {
 		this.width = width;
 	}
 
+	updateWorldSize = (width, height) => {
+		this.height = height;
+		this.width = width;
+	};
+
 	handleCollision = player => {
 		// If player hits max-left, stop player from continuing left.
 		if (player.x < 0) {
@@ -50,8 +55,8 @@ export default class World {
 class Player {
 	constructor(x, y) {
 		this.color = "rgb(244, 182, 66)";
-		this.height = 15;
-		this.width = 15;
+		this.height = 35;
+		this.width = 35;
 		this.jumping = true;
 		this.velocity_x = 0;
 		this.velocity_y = 0;
