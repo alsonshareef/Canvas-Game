@@ -12,26 +12,27 @@ export default class Game {
 	constructor() {
 		this.display = new Display(document.getElementById("primary-canvas"));
 		this.engine = new Engine(this.update, this.draw);
-		this.world = new World(
-			this.display.context.canvas.height,
-			this.display.context.canvas.width
-		);
+		this.world = new World();
 		this.player = this.world.player;
 		this.input = new Input();
+		this.mode = {
+			play: false,
+			map: false
+		};
 	}
 
 	// Resizes canvas whenever viewport dimensions change, to dimensions with same aspect ratio as game world.
 	resize = () => {
-		// New canvas dimensions variable after window resize.
+		// New canvas dimensions that have the same aspect ratio as game world dimensions after window resize.
 		let worldSize = this.display.resizeCanvas(
 			window.innerHeight - 30,
 			window.innerWidth - 30,
 			this.world.height / this.world.width
 		);
 
-		// Update the world size to stay proportionate to new canvas dimensions and then redraw.
+		// Update the world size and player size to stay proportionate to new canvas dimensions.
 		this.world.updateWorldSize(worldSize.width, worldSize.height);
-		this.display.drawWorld();
+		this.player.updatePlayerSize(worldSize.width);
 	};
 
 	// Fills the buffer canvas with the world, then draws buffer onto primary canvas.
@@ -71,7 +72,6 @@ export default class Game {
 	};
 
 	// INITIALIZE
-
 	start = () => {
 		requestAnimationFrame(this.engine.loop);
 	};
