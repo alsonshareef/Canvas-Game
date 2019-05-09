@@ -4,20 +4,22 @@
  */
 
 export default class World {
-	constructor(height, width) {
+	constructor() {
+		this.player = new Player();
 		this.background_color = "rgb(17, 60, 81)";
 		this.friction = 0.95;
 		this.gravity = 0;
-		this.player = new Player();
-		this.height = height;
-		this.width = width;
+		this.height = 150;
+		this.width = 300;
 	}
 
+	// Updates world size whenever the viewport changes size.
 	updateWorldSize = (width, height) => {
 		this.height = height;
 		this.width = width;
 	};
 
+	// Handles player collision
 	handleCollision = player => {
 		// If player hits max-left, stop player from continuing left.
 		if (player.x < 0) {
@@ -53,16 +55,22 @@ export default class World {
 }
 
 class Player {
-	constructor(x, y) {
+	constructor() {
 		this.color = "rgb(244, 182, 66)";
 		this.height = 35;
 		this.width = 35;
 		this.jumping = true;
 		this.velocity_x = 0;
 		this.velocity_y = 0;
-		this.x = 50;
-		this.y = 108;
+		this.x = 60;
+		this.y = 700;
 	}
+
+	// Updates player size in proportion to the width of the canvas.
+	updatePlayerSize = width => {
+		this.width = width / 30;
+		this.height = width / 30;
+	};
 
 	moveLeft = delta => {
 		this.velocity_x -= 0.05 * delta;
