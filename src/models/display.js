@@ -5,7 +5,7 @@
 
 export default class Display {
 	constructor(canvas) {
-		// Primary canvas context, and secondary canvas to be used as a buffer.
+		// Primary canvas context
 		this.context = canvas.getContext("2d");
 	}
 
@@ -29,9 +29,11 @@ export default class Display {
 	// Used to resize canvas dimensions to dimensions with same aspect ratio as the game world.
 	resizeCanvas(viewHeight, viewWidth, gameAspectRatio) {
 		if (viewHeight / viewWidth > gameAspectRatio) {
+			// Max width scenario, where height has to be calculated against AR
 			this.context.canvas.height = viewWidth * gameAspectRatio;
 			this.context.canvas.width = viewWidth;
 		} else {
+			// Max height scenario, where width has to be calculated against AR
 			this.context.canvas.height = viewHeight;
 			this.context.canvas.width = viewHeight / gameAspectRatio;
 		}
