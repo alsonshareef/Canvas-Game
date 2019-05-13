@@ -38,7 +38,7 @@ export default class Game {
 		this.player.updatePlayerSize(worldSize.width);
 	};
 
-	// Fills the buffer canvas with the world, then draws buffer onto primary canvas.
+	// Draws loaded level and player onto primary canvas.
 	draw = () => {
 		this.display.drawLevel(this.world.background_color, this.levelData);
 		this.display.drawPlayer(
