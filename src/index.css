@@ -3,19 +3,22 @@
 	padding: 0;
 }
 
-html {
-	height: 100%;
-}
-
 body {
-	height: 100%;
-	width: 100%;
 	display: grid;
 	align-content: center;
 	align-items: space-around;
 	justify-items: center;
 }
 
+h1 {
+	margin: 15px;
+}
+
+.map-name {
+	margin: 4px 10px 4px 10px;
+}
+
 #primary-canvas {
 	border: solid black 1px;
+	margin: 5px 20px 5px 20px;
 }
