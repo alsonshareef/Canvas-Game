@@ -40,7 +40,7 @@ export default class Game {
 
 	// Fills the buffer canvas with the world, then draws buffer onto primary canvas.
 	draw = () => {
-		this.display.drawWorld(this.world.background_color, this.levelData);
+		this.display.drawLevel(this.world.background_color, this.levelData);
 		this.display.drawPlayer(
 			this.player.x,
 			this.player.y,

@@ -79,7 +79,7 @@ export default class Display {
 	};
 
 	// 3. Draw built level onto primary canvas.
-	drawWorld(color, levelData) {
+	drawLevel(color, levelData) {
 		// Clear canvas
 		this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
