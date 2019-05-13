@@ -9,11 +9,11 @@ export default class World {
 		this.background_color = "rgb(17, 60, 81)";
 		this.friction = 0.95;
 		this.gravity = 0;
-		this.height = 150;
-		this.width = 300;
+		this.height = 108;
+		this.width = 192;
 	}
 
-	// Updates world size whenever the viewport changes size.
+	// Updates world size whenever the viewport changes size, for the purpose of keeping player collision dimensions = to canvas dimensions.
 	updateWorldSize = (width, height) => {
 		this.height = height;
 		this.width = width;
@@ -62,8 +62,8 @@ class Player {
 		this.jumping = true;
 		this.velocity_x = 0;
 		this.velocity_y = 0;
-		this.x = 60;
-		this.y = 700;
+		this.x = 50;
+		this.y = 50;
 	}
 
 	// Updates player size in proportion to the width of the canvas.
