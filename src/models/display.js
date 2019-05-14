@@ -1,6 +1,6 @@
 /**
  * File: display.js
- * Description: This file is responsible for logic relating to the Canvas; in other words what the user will see.
+ * Description: This file is responsible for logic relating to the canvas and anything the user will see.
  */
 
 import { solidElement } from "./blocks";
@@ -50,7 +50,7 @@ export default class Display {
 		// Array that stores all element objects that are created with respective class constructors
 		let finalLevelData = [];
 
-		// This will iterate over every row array and determine what element needs to be drawn depending on character.
+		// This will iterate over every row array and determine what element needs to be drawn depending on the characters in each row array.
 		levelData.forEach((row, rowIndex) => {
 			row.forEach((element, elementIndex) => {
 				let position = {
@@ -87,12 +87,11 @@ export default class Display {
 		this.ctx.fillStyle = color;
 		this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
-		// Build out the level and receive an array of element objects.
-		let elements = this.buildLevel(
-			levelData,
-			this.ctx.canvas,
-			this.blockCalc(levelData)
-		);
+		// Store block dimensions for current level data.
+		this.block = this.blockCalc(levelData);
+
+		// Build out the level and receive an array of element classes.
+		let elements = this.buildLevel(levelData, this.ctx.canvas, this.block);
 
 		// Draw out each element object using its properties
 		elements.forEach(e => {
