@@ -24,6 +24,10 @@ import Game from "./models/game";
 let game = new Game();
 
 // GAME INITIALIZATION //
-game.setupEventListeners();
 game.resize(); // Resizes canvas to viewport dimensions on first load
+window.addEventListener("resize", game.resize);
+
+game.setupGameEventListeners();
+// game.setupMapEventListeners();
+
 game.start(); // Starts game loop.
