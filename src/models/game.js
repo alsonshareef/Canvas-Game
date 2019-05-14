@@ -18,7 +18,7 @@ export default class Game {
 		this.levelService = new levelService();
 		this.levelData = this.levelService.loadLevelData("static", "test");
 		this.player = this.world.player;
-		this.mode = {
+		this.state = {
 			play: false,
 			map: false
 		};
@@ -67,14 +67,26 @@ export default class Game {
 		this.world.update();
 	};
 
-	// Setup event listeners for window resizes and user input.
-	setupEventListeners = () => {
-		window.addEventListener("resize", this.resize);
+	/**
+	 * EVENT LISTENERS for different game states
+	 */
+
+	// Setup event listeners during "play" state.
+	setupGameEventListeners = () => {
 		window.addEventListener("keydown", this.input.keyListener);
 		window.addEventListener("keyup", this.input.keyListener);
 	};
 
-	// INITIALIZE
+	// Setup event listeners during "map" state.
+	setupMapEventListeners = () => {
+		this.input.handleBlock.bind(this)();
+		this.input.handleLevelData.bind(this)();
+	};
+
+	/**
+	 * INITIALIZE
+	 */
+
 	start = () => {
 		requestAnimationFrame(this.engine.loop);
 	};
