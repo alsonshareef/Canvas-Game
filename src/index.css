@@ -4,21 +4,51 @@
 }
 
 body {
-	display: grid;
-	align-content: center;
-	align-items: space-around;
-	justify-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
 }
 
 h1 {
-	margin: 15px;
+	margin: 10px;
 }
 
-.map-name {
-	margin: 4px 10px 4px 10px;
+.game-head {
+	margin: 5px 10px;
+	display: flex;
+	align-items: center;
 }
+
+.map-name,
 .mode-name {
 	margin: 4px 10px 4px 10px;
+}
+
+.button {
+	box-shadow: inset 0px -3px 7px 0px #000000;
+	background: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0.05, #030303),
+		color-stop(1, #737a80)
+	);
+	background-color: #030303;
+	border-radius: 3px;
+	border: 1px solid #0b0e07;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 15px;
+	padding: 9px 23px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #263666;
+}
+
+.button:active {
+	position: relative;
+	top: 1px;
 }
 
 #primary-canvas {
