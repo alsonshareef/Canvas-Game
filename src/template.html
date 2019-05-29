@@ -9,13 +9,20 @@
 	<body>
 		<h1>Platform Game</h1>
 		<div class="game-head">
-			<span class="map">
-				<p class="map-name"></p>
-			</span>
-			<span class="mode">
-				<p class="mode-name">MODE</p>
-			</span>
-			<button class="button">Toggle Mode</button>
+			<div class="head-left">
+				<button class="button">Save</button>
+				<button class="button">Load</button>
+				<button class="button">Delete</button>
+			</div>
+			<div class="head-right">
+				<span class="map">
+					<p class="map-name"></p>
+				</span>
+				<span class="mode">
+					<p class="mode-name">MODE: ""</p>
+				</span>
+				<button class="button">Toggle Mode</button>
+			</div>
 		</div>
 		<canvas id="primary-canvas"></canvas>
 	</body>
