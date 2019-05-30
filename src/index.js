@@ -23,11 +23,30 @@ import Game from "./models/game";
 
 let game = new Game();
 
+// Toggles the games.mode and sets up/removes event listeners so only event listeners relevant to current game.mode are active.
+let toggleMode = () => {
+	if (!game.mode.play) {
+		game.mode.play = true;
+		game.mode.edit = !true;
+		game.setupGameEventListeners();
+		game.removeEditEventListeners();
+	} else {
+		game.mode.play = !true;
+		game.mode.edit = true;
+		game.setupEditEventListeners();
+		game.removeGameEventListeners();
+	}
+
+	document.querySelector(".mode-name").innerHTML = `MODE: ${
+		game.mode.play ? "PLAY" : "EDIT"
+	}`;
+};
+
 // GAME INITIALIZATION //
-game.resize(); // Resizes canvas to viewport dimensions on first load
+document.querySelector(".mode-name").innerHTML = `MODE: PLAY`;
+document.getElementById("toggle").addEventListener("click", toggleMode);
 window.addEventListener("resize", game.resize);
 
+game.resize(); // Resizes canvas to viewport dimensions on first load
 game.setupGameEventListeners();
-// game.setupMapEventListeners();
-
 game.start(); // Starts game loop.
