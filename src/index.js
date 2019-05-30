@@ -19,6 +19,7 @@
  */
 
 import "./index.css";
+import { DOM } from "./models/dom_elements";
 import Game from "./models/game";
 
 let game = new Game();
@@ -27,24 +28,25 @@ let game = new Game();
 let toggleMode = () => {
 	if (!game.mode.play) {
 		game.mode.play = true;
-		game.mode.edit = !true;
+		game.mode.edit = false;
 		game.setupGameEventListeners();
 		game.removeEditEventListeners();
 	} else {
-		game.mode.play = !true;
+		game.mode.play = false;
 		game.mode.edit = true;
 		game.setupEditEventListeners();
 		game.removeGameEventListeners();
 	}
 
-	document.querySelector(".mode-name").innerHTML = `MODE: ${
-		game.mode.play ? "PLAY" : "EDIT"
-	}`;
+	console.log(`Mode PLAY = ${game.mode.play}`);
+	console.log(`Mode EDIT = ${game.mode.edit}`);
+
+	DOM.modeName.innerHTML = `MODE: ${game.mode.play ? "PLAY" : "EDIT"}`;
 };
 
 // GAME INITIALIZATION //
-document.querySelector(".mode-name").innerHTML = `MODE: PLAY`;
-document.getElementById("toggle").addEventListener("click", toggleMode);
+DOM.modeName.innerHTML = `MODE: PLAY`;
+DOM.toggleButton.addEventListener("click", toggleMode);
 window.addEventListener("resize", game.resize);
 
 game.resize(); // Resizes canvas to viewport dimensions on first load
