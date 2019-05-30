@@ -41,44 +41,37 @@ export default class Input {
 	 * "MAP" STATE EVENT CALLBACKS
 	 */
 
-	// 1. Sets a click event listener and a callback to subsequently manipulate the level data and redraw.
-	handleBlock() {
-		document
-			.getElementById("primary-canvas")
-			.addEventListener("click", e => {
-				// Storing the coordinates of clicks within the canvas, relative to the canvas; not the whole DOM.
-				let clickCoordinates = {
-					x: e.offsetX,
-					y: e.offsetY
-				};
+	handleBlock(e) {
+		// Storing the coordinates of clicks within the canvas, relative to the canvas; not the whole DOM.
+		let clickCoordinates = {
+			x: e.offsetX,
+			y: e.offsetY
+		};
 
-				// Calculates which column and row of the clicked block.
-				let column = Math.floor(
-					clickCoordinates.x /
-						(this.display.ctx.canvas.width /
-							this.display.block.width)
-				);
-				let row = Math.floor(
-					clickCoordinates.y /
-						(this.display.ctx.canvas.height /
-							this.display.block.height)
-				);
+		// Calculates which column and row of the clicked block.
+		let column = Math.floor(
+			clickCoordinates.x /
+				(this.display.ctx.canvas.width / this.display.block.width)
+		);
+		let row = Math.floor(
+			clickCoordinates.y /
+				(this.display.ctx.canvas.height / this.display.block.height)
+		);
 
-				// -- Manipulation
+		// -- Manipulation
 
-				// 1. Copy of level data
-				let cloneMap = this.levelData.slice();
+		// 1. Copy of level data
+		let cloneMap = this.levelData.slice();
 
-				// 2. Toggle between empty space and block
-				if (cloneMap[row][column] === "#") {
-					cloneMap[row][column] = ".";
-				} else if (cloneMap[row][column] === ".") {
-					cloneMap[row][column] = "#";
-				}
+		// 2. Toggle between empty space and block
+		if (cloneMap[row][column] === "#") {
+			cloneMap[row][column] = ".";
+		} else if (cloneMap[row][column] === ".") {
+			cloneMap[row][column] = "#";
+		}
 
-				// 3. Set level data to updated level, and redraw.
-				this.levelData = cloneMap;
-			});
+		// 3. Set level data to updated level, and redraw.
+		this.levelData = cloneMap;
 	}
 
 	// 2. Sets a keypress event listener and a callback that handles saving, loading and deleting level data from localStorage/API.
