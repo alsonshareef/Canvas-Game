@@ -9,9 +9,11 @@ import World from "./world";
 import Input from "./input";
 import levelService from "./levels";
 
+import { DOM } from "../models/dom_elements";
+
 export default class Game {
 	constructor() {
-		this.display = new Display(document.getElementById("primary-canvas"));
+		this.display = new Display(DOM.canvas);
 		this.engine = new Engine(this.update, this.draw);
 		this.world = new World();
 		this.input = new Input();
@@ -73,24 +75,30 @@ export default class Game {
 
 	// 1. "PLAY" state setup listeners
 	setupGameEventListeners = () => {
-		window.addEventListener("keydown", this.input.keyListener);
-		window.addEventListener("keyup", this.input.keyListener);
+		document.addEventListener("keydown", this.input.keyListener);
+		document.addEventListener("keyup", this.input.keyListener);
 	};
 
 	// 2. "PLAY" state remove listeners
 	removeGameEventListeners = () => {
-		window.removeEventListener("keydown", this.input.keyListener);
-		window.removeEventListener("keyup", this.input.keyListener);
+		document.removeEventListener("keydown", this.input.keyListener);
+		document.removeEventListener("keyup", this.input.keyListener);
 	};
 
 	// 3. "EDIT" state setup listeners
 	setupEditEventListeners = () => {
-		this.input.handleBlock.bind(this)();
-		this.input.handleLevelData.bind(this)();
+		DOM.canvas.addEventListener("click", this.input.handleBlock.bind(this));
+		// this.input.handleBlock.bind(this)();
+		// this.input.handleLevelData.bind(this)();
 	};
 
 	// 4. "EDIT" state remove listeners
-	removeEditEventListeners = () => {};
+	removeEditEventListeners = () => {
+		DOM.canvas.removeEventListener(
+			"click",
+			this.input.handleBlock.bind(this)
+		);
+	};
 
 	/**
 	 * INITIALIZE
