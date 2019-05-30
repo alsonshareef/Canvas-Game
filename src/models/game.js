@@ -18,9 +18,9 @@ export default class Game {
 		this.levelService = new levelService();
 		this.levelData = this.levelService.loadLevelData("static", "test");
 		this.player = this.world.player;
-		this.state = {
-			play: false,
-			map: false
+		this.mode = {
+			play: true,
+			edit: false
 		};
 	}
 
@@ -68,20 +68,29 @@ export default class Game {
 	};
 
 	/**
-	 * EVENT LISTENERS for different game states
+	 * SETUP/REMOVE event listener methods for PLAY/EDIT states.
 	 */
 
-	// Setup event listeners during "play" state.
+	// 1. "PLAY" state setup listeners
 	setupGameEventListeners = () => {
 		window.addEventListener("keydown", this.input.keyListener);
 		window.addEventListener("keyup", this.input.keyListener);
 	};
 
-	// Setup event listeners during "map" state.
-	setupMapEventListeners = () => {
+	// 2. "PLAY" state remove listeners
+	removeGameEventListeners = () => {
+		window.removeEventListener("keydown", this.input.keyListener);
+		window.removeEventListener("keyup", this.input.keyListener);
+	};
+
+	// 3. "EDIT" state setup listeners
+	setupEditEventListeners = () => {
 		this.input.handleBlock.bind(this)();
 		this.input.handleLevelData.bind(this)();
 	};
+
+	// 4. "EDIT" state remove listeners
+	removeEditEventListeners = () => {};
 
 	/**
 	 * INITIALIZE
