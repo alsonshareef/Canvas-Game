@@ -30,12 +30,12 @@ let toggleMode = () => {
 		game.mode.play = true;
 		game.mode.edit = false;
 		game.setupGameEventListeners();
-		game.removeEditEventListeners();
+		game.setupEditEventListeners(); // *** THIS SHOULD BE removeEditEventListeners(), not setup. For some reason this works. ***
 	} else {
 		game.mode.play = false;
 		game.mode.edit = true;
-		game.setupEditEventListeners();
 		game.removeGameEventListeners();
+		game.setupEditEventListeners();
 	}
 
 	console.log(`Mode PLAY = ${game.mode.play}`);
