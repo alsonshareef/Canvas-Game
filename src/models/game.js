@@ -87,16 +87,19 @@ export default class Game {
 
 	// 3. "EDIT" state setup listeners
 	setupEditEventListeners = () => {
-		DOM.canvas.addEventListener("click", this.input.handleBlock.bind(this));
-		// this.input.handleBlock.bind(this)();
-		// this.input.handleLevelData.bind(this)();
+		DOM.canvas.addEventListener(
+			"click",
+			this.input.handleBlock.bind(this),
+			true
+		);
 	};
 
 	// 4. "EDIT" state remove listeners
 	removeEditEventListeners = () => {
 		DOM.canvas.removeEventListener(
 			"click",
-			this.input.handleBlock.bind(this)
+			this.input.handleBlock.bind(this),
+			true
 		);
 	};
 
